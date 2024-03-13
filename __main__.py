@@ -1,5 +1,12 @@
-def main():
-    return
+from crud import crud
 
-if __name__ == "__main__":
-    main()
+class Main:
+    def __init__(self):
+        self.crud=crud()
+
+    def main():
+        c=crud()
+        c.update_task(1)
+
+    if __name__ == "__main__":
+        main()
