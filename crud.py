@@ -53,7 +53,7 @@ class crud:
     """"função que retorna os dados na tabela completed_tasks"""
     def view_completed_tasks(self):
         cursor=self.connection.cursor()
-        comando=f'SELECT * FROM completed_tasks'
+        comando=f'SELECT * FROM tasks WHERE statusTask=1'
         cursor.execute(comando)
         res=cursor.fetchall()
         print(res)

@@ -5,8 +5,3 @@ simple todo-list crud with Python and MySQL
         - nomeTask
         - descTask
         - statusTask
-    - completedTasks
-        - idTask
-        - nomeTask
-        - descTask
-        - statusTask
