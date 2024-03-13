@@ -64,7 +64,7 @@ class crud:
     """"função que seta o valor de statusTask para 1 (task completada), usa idTask como parametro"""
     def update_task(self, idTask):
         cursor=self.connection.cursor()
-        comando=f'UPDATE tasks SET statusTask=1 WHERE idTasks="{idTask}"'
+        comando=f'UPDATE tasks SET statusTask=1 WHERE idTask="{idTask}"'
         cursor.execute(comando)
         self.connection.commit()
         cursor.close()
@@ -74,7 +74,7 @@ class crud:
     """"função que deleta task com base em seu idTask, usa o idTask como parametro"""
     def delete_task(self, idTask):
         cursor=self.connection.cursor()
-        comando=f'DELETE FROM tasks WHERE idTasks="{idTask}"'
+        comando=f'DELETE FROM tasks WHERE idTask="{idTask}"'
         cursor.execute(comando)
         self.connection.commit()
         cursor.close()
