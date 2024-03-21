@@ -6,6 +6,6 @@ class Main:
 
     def main():
         c=crud()
-        c.view_all_tasks()
+        c.view_tasks()
     if __name__ == "__main__":
         main()

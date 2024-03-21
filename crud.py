@@ -23,6 +23,7 @@ class crud:
         comando=f'INSERT INTO tasks (nomeTask, descTask, statusTask) VALUES ("{nome}", "{descricao}", 0)'
         cursor.execute(comando)
         self.connection.commit()
+        print("Task inserted")
         cursor.close()
         self.connection.close()
     
@@ -33,7 +34,9 @@ class crud:
         comando=f'SELECT * FROM tasks'
         cursor.execute(comando)
         res=cursor.fetchall()
-        print(res)
+        for row in res:
+            print("Nome:",row[1])
+            print("Descrição:",row[2])
         cursor.close()
         self.connection.close()
     
@@ -44,7 +47,9 @@ class crud:
         comando=f'SELECT * FROM tasks WHERE statusTask=0'
         cursor.execute(comando)
         res=cursor.fetchall()
-        print(res)
+        for row in res:
+            print("Nome:",row[1])
+            print("Descrição:",row[2])
         cursor.close()
         self.connection.close()
     
@@ -55,17 +60,25 @@ class crud:
         comando=f'SELECT * FROM tasks WHERE statusTask=1'
         cursor.execute(comando)
         res=cursor.fetchall()
-        print(res)
+        for row in res:
+            print("Nome:",row[1])
+            print("Descrição:",row[2])
         cursor.close()
         self.connection.close()
     
     
     """"função que seta o valor de statusTask para 1 (task completada), usa idTask como parametro"""
-    def update_task(self, idTask):
+    def update_task(self):
         cursor=self.connection.cursor()
+        res=self.view_all_tasks()
+        for row in res:
+            print("Id:",row[0])
+            print("Nome:",row[1])
+        idTask=int(input("Qual task deseja atualizar?"))
         comando=f'UPDATE tasks SET statusTask=1 WHERE idTask="{idTask}"'
         cursor.execute(comando)
         self.connection.commit()
+        print("Task atualizada")
         cursor.close()
         self.connection.close()
     
@@ -73,8 +86,14 @@ class crud:
     """"função que deleta task com base em seu idTask, usa o idTask como parametro"""
     def delete_task(self, idTask):
         cursor=self.connection.cursor()
+        res=self.view_all_tasks()
+        for row in res:
+            print("Id:",row[0])
+            print("Nome:",row[1])
+        idTask=int(input("Qual task deseja deletar?"))
         comando=f'DELETE FROM tasks WHERE idTask="{idTask}"'
         cursor.execute(comando)
         self.connection.commit()
+        print("Task deletada")
         cursor.close()
         self.connection.close()
