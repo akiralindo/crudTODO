@@ -1,4 +1,5 @@
 import mysql.connector
+from viewTable import viewTable
 
 class Tasks:
     def __init__(self):
@@ -28,43 +29,9 @@ class Tasks:
         self.connection.close()
     
     
-    """"função que retorna todos os dados na tabela tasks"""
-    def view_all_tasks(self):
-        cursor=self.connection.cursor()
-        comando=f'SELECT * FROM tasks'
-        cursor.execute(comando)
-        res=cursor.fetchall()
-        for row in res:
-            print("Nome:",row[1])
-            print("Descrição:",row[2])
-        cursor.close()
-        self.connection.close()
-    
-    
-    """"função que retorna os dados na tabela tasks que não estão completados"""
-    def view_tasks(self):
-        cursor=self.connection.cursor()
-        comando=f'SELECT * FROM tasks WHERE statusTask=0'
-        cursor.execute(comando)
-        res=cursor.fetchall()
-        for row in res:
-            print("Nome:",row[1])
-            print("Descrição:",row[2])
-        cursor.close()
-        self.connection.close()
-    
-    
-    """"função que retorna os dados na tabela completed_tasks"""
-    def view_completed_tasks(self):
-        cursor=self.connection.cursor()
-        comando=f'SELECT * FROM tasks WHERE statusTask=1'
-        cursor.execute(comando)
-        res=cursor.fetchall()
-        for row in res:
-            print("Nome:",row[1])
-            print("Descrição:",row[2])
-        cursor.close()
-        self.connection.close()
+    def select_view_tasks(self):
+        int(input("1. All tasks\n2. Tasks\n3. Completed tasks"))
+        v=viewTable()
     
     
     """"função que seta o valor de statusTask para 1 (task completada), usa idTask como parametro"""
