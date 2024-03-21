@@ -1,6 +1,6 @@
 import mysql.connector
 
-class viewTable:
+class ViewTable:
     def __init__(self):
         #estabelecendo conexão com o banco de dados
         self.connection=self.connect()
@@ -24,6 +24,10 @@ class viewTable:
         for row in res:
             print("Nome:",row[1])
             print("Descrição:",row[2])
+            comando=f'SELECT username FROM user WHERE idUser={row[4]}'
+            cursor.execute(comando)
+            user=cursor.fetchone()
+            print("Usuário:", user[0]+"\n")
         cursor.close()
         self.connection.close()
         
@@ -36,6 +40,10 @@ class viewTable:
         for row in res:
             print("Nome:",row[1])
             print("Descrição:",row[2])
+            comando=f'SELECT username FROM user WHERE idUser={row[4]}'
+            cursor.execute(comando)
+            user=cursor.fetchone()
+            print("Usuário:", user[0]+"\n")
         cursor.close()
         self.connection.close()
         
@@ -48,5 +56,9 @@ class viewTable:
         for row in res:
             print("Nome:",row[1])
             print("Descrição:",row[2])
+            comando=f'SELECT username FROM user WHERE idUser={row[4]}'
+            cursor.execute(comando)
+            user=cursor.fetchone()
+            print("Usuário:", user[0]+"\n")
         cursor.close()
         self.connection.close()

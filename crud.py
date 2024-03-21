@@ -1,7 +1,7 @@
 import mysql.connector
-from viewTable import viewTable
+from viewTable import ViewTable
 
-class Tasks:
+class Crud:
     def __init__(self):
         #estabelecendo conexão com o banco de dados
         self.connection=self.connect()
@@ -19,9 +19,9 @@ class Tasks:
     
     """função que insere os dados no banco de dados com os parametros = nome da task, 
     descrição da task e status da task com o valor 0 como padrão (não completada)"""
-    def insert_tasks(self,nome,descricao):
+    def insert_tasks(self, user):
         cursor=self.connection.cursor()
-        comando=f'INSERT INTO tasks (nomeTask, descTask, statusTask) VALUES ("{nome}", "{descricao}", 0)'
+        comando=f'INSERT INTO tasks (nomeTask, descTask, idUser) VALUES ("{input("Task: ")}","{input("Descrição: ")}","{user}")'
         cursor.execute(comando)
         self.connection.commit()
         print("Task adicionada")
@@ -30,9 +30,15 @@ class Tasks:
     
     
     def select_view_tasks(self):
-        int(input("1. All tasks\n2. Tasks\n3. Completed tasks"))
-        v=viewTable()
-    
+        opt=int(input("1. All tasks\n2. Tasks\n3. Completed tasks\n0. Back\n"))
+        v=ViewTable()
+        match opt:
+            case 1:
+                v.view_all_tasks()
+            case 2:
+                v.view_tasks()
+            case 3:
+                v.view_completed_tasks()
     
     """"função que seta o valor de statusTask para 1 (task completada), usa idTask como parametro"""
     def update_task(self):

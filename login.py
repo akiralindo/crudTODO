@@ -20,11 +20,14 @@ class Login:
         user=input("Usuário: ")
         comando=f'SELECT * FROM user WHERE username="{user}"'
         cursor.execute(comando)
-        res=cursor.fetchall()
-        if res:
+        self.res=cursor.fetchall()
+        print(self.res)
+        if self.res:
             pas=input("Senha: ")
-            if(res[0][2]==pas):
+            if(self.res[0][2]==pas):
                 print("Login efetuado com sucesso")
+                self.userid=self.res[0][0]
+                return self.userid
             else:
                 print("Senha incorreta")
                 self.userLogin()

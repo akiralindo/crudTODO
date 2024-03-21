@@ -1,13 +1,13 @@
-from crud import Tasks
+from crud import Crud
 from register import Register
 from login import Login
 
 class Main:
     def main():
-        crud=Tasks()
         reg=Register()
         log=Login()
-        log.userLogin()
-        
+        crud=Crud()
+        user=log.userLogin()
+        crud.insert_tasks(user)
     if __name__ == "__main__":
         main()
