@@ -1,11 +1,11 @@
-from crud import crud
+from crud import Tasks
+from register import Register
 
 class Main:
-    def __init__(self):
-        self.crud=crud()
-
     def main():
-        c=crud()
-        c.view_tasks()
+        crud=Tasks()
+        reg=Register()
+        reg.registerUser()
+        crud.view_all_tasks()
     if __name__ == "__main__":
         main()

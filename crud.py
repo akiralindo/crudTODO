@@ -1,6 +1,6 @@
 import mysql.connector
 
-class crud:
+class Tasks:
     def __init__(self):
         #estabelecendo conexão com o banco de dados
         self.connection=self.connect()
