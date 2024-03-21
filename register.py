@@ -29,5 +29,6 @@ class Register:
         comando=f'INSERT INTO user (username,password) VALUES("{user}","{pas}")'
         cursor.execute(comando)
         self.connection.commit()
+        print("Usuário registrado")
         cursor.close()
         self.connection.close()

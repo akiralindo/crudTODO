@@ -23,7 +23,7 @@ class Tasks:
         comando=f'INSERT INTO tasks (nomeTask, descTask, statusTask) VALUES ("{nome}", "{descricao}", 0)'
         cursor.execute(comando)
         self.connection.commit()
-        print("Task inserted")
+        print("Task adicionada")
         cursor.close()
         self.connection.close()
     
